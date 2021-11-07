@@ -71,7 +71,7 @@
 \makeatother
 \subtitle{Numerical Statistics Fall, 2021}
 \author{Jake Underland}
-\date{2021-11-07}
+\date{2021-11-08}
 
 \begin{document}
 \maketitle
@@ -125,5 +125,81 @@ E(Z^4) &= \int _{-\infty}^{\infty}z^4 \frac{1}{\sqrt{2\pi}}\exp(-\frac{z^2}{2})d
 &= \sum_i 2 \\
 &= 2n\dots \Box
 \end{aligned}\]
+
+\hypertarget{sampling-distribution-of-variances}{%
+\subsection{Sampling Distribution of
+Variances}\label{sampling-distribution-of-variances}}
+
+Let \[X_1, X_2, \dots, X_n \stackrel{iid}{\sim} N(\mu, \sigma^2)\] Then,
+\[\sum_i \left(\frac{X_i - \mu}{\sigma}\right)^2 = \sum_i Z_i^2 \sim \chi^2_n\]
+\boldmath \[\iff \frac{1}{\sigma^2}\sum_{i=1}^n (X_i - \mu)^2 \sim \chi^2_n\]
+\unboldmath
+
+Now, \[\begin{aligned}
+\frac{1}{\sigma^2}\sum_{i=1}^n (X_i - \mu)^2&= \frac{1}{\sigma^2}\sum_{i=1}^n (X_i - \bar{X} + \bar{X} - \mu)^2 \\
+&= \frac{1}{\sigma^2}\left[\sum_{i=1}^n (X_i - \bar{X}) + n(\bar{X} - \mu)^2 \right] \\
+&= \frac{1}{\sigma^2}\sum_{i=1}^n (X_i - \bar{X}) + \left(\frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}\right)^2  
+\end{aligned}\] Where \[\begin{aligned}
+&\frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}} \sim N(0, 1) \\
+\implies&\left(\frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}\right)^2 \sim \chi ^2 _1
+\end{aligned}\] Thus, following from the independence of
+\(\bar{X} \text{ and } \sum_{i=1}^n(X_i - \bar{X})^2\), proven in
+lectures for STAT 245, we have \[\begin{aligned}
+\underbrace{\frac{1}{\sigma^2}\sum_{i=1}^n (X_i - \mu)^2}_{\sim \chi^2_n}
+&= \frac{1}{\sigma^2}\sum_{i=1}^n (X_i - \bar{X}) + \underbrace{\left(\frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}\right)^2}_{\sim \chi ^2 _1} 
+\end{aligned}\]
+\boldmath \[\implies \frac{1}{\sigma^2}\sum_{i=1}^n (X_i - \bar{X}) \sim \chi^2_{n-1}\]\unboldmath
+Additionally,
+\[\hat{S}^2 = \frac{1}{n-1}\sum_i^n(X_i - \bar{X})^2\implies \frac{(n-1)\hat{S}^2}{\sigma^2} \sim \chi ^2 _{n-1}\]
+
+\hypertarget{t-distribution}{%
+\section{t-distribution}\label{t-distribution}}
+
+\hypertarget{definition}{%
+\subsection{Definition}\label{definition}}
+
+Let \[Y \sim \chi ^2 _n; \; Z \sim N(0, 1); \; Y \perp \!\!\! \perp Z\]
+Then, \[\frac{\sqrt{n}Z}{\sqrt{Y}}\sim t_n\]
+
+\hypertarget{sampling-with-unknown-population-variance}{%
+\subsection{Sampling with unknown population
+variance}\label{sampling-with-unknown-population-variance}}
+
+Let \[ X_1, \dots, X_n \stackrel{iid}{\sim}N(\mu, \sigma^2)\] Then,
+\[\frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}} \sim N(0, 1)\] Let
+\(\hat{S} = \sqrt{\hat{S}^2} = \sqrt{\frac{1}{n-1}\sum_{i=1}^n(X_i - \bar{X})^2}\)\\
+Then, from the definition of the \(t\) distribution,
+\boldmath \[T= \frac{\sqrt{n}(\bar{X} - \mu)}{\hat{S}} \sim t_{n-1}\]\unboldmath
+
+\hypertarget{expectation-1}{%
+\subsection{Expectation}\label{expectation-1}}
+
+Let \(T \sim t_m\): \[E(T) = 0\]
+
+\hypertarget{variance-1}{%
+\subsection{Variance}\label{variance-1}}
+
+\[Var(T) = \frac{m}{m-2} \dots (m > 2)\]
+
+\hypertarget{relation-to-normal}{%
+\subsection{Relation to Normal}\label{relation-to-normal}}
+
+From Chebyshev's inequality, we have \(\forall \epsilon > 0\)
+\[\begin{aligned}
+P(|\hat{S}^2 - \sigma^2| > \epsilon) \le \frac{Var(\hat{S}^2)}{\epsilon^2} = \frac{1}{\epsilon^2} \cdot \frac{2\sigma^4}{n-1}  \to 0 \;\;(n \to \infty)
+\end{aligned}\] Where \[\begin{aligned}
+Var\left(\frac{(n-1)\hat{S}^2}{\sigma^2}\right) &= 2(n-1) \\
+\frac{(n-1)^2}{\sigma^4}Var(\hat{S}^2) &= 2(n-1) \\
+\implies Var(\hat{S}^2) &= \frac{2\sigma^4}{(n-1)}
+\end{aligned}\] This means that \(\hat{S}^2 \stackrel{p}{\to} \sigma^2\)
+(consistent), and as \(n\to \infty\),
+\[\frac{\sqrt{n}(\bar{X} - \mu)}{\hat{S}} \to \frac{\sqrt{n}(\bar{X} - \mu)}{\sigma} \sim N(0, 1)\]
+
+\hypertarget{median}{%
+\section{Median}\label{median}}
+
+When the size of a data is odd (\(n = 2m+1\) where
+\(m \in \mathbb{N}\)), then the median of the data is
+\[\arg\min_c f(c) = \sum_{i=1}^n |x_i - c|\]
 
 \end{document}
