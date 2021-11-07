@@ -1,0 +1,8 @@
+\contentsline {section}{The Sampling Distribution of Proportions}{1}{section*.2}%
+\contentsline {subsection}{Bernoulli Distribution}{1}{section*.3}%
+\contentsline {subsection}{Binomial Distribution}{2}{section*.4}%
+\contentsline {subsection}{Proportions}{2}{section*.5}%
+\contentsline {section}{Sampling Distribution of the Differences of Means}{3}{section*.6}%
+\contentsline {subsection}{Infinite Population (Sampling With Replacement)}{3}{section*.7}%
+\contentsline {subsection}{Finite Population (Sampling Without Replacement)}{4}{section*.8}%
+\contentsline {section}{The Sample Variance}{4}{section*.9}%
