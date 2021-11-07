@@ -1,1 +1,2 @@
-# Numerical Statistics    coursework for various statistics classes
+# Numerical Statistics  
+coursework for various statistics classes
